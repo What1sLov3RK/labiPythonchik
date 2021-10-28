@@ -1,0 +1,71 @@
+
+import sys
+class Time:
+    def __init__(self, hour, min, sec):
+        if isinstance(hour, (int)):
+            if hour >= 0 and hour < 24:
+                self.hour = hour
+            else:
+                raise ValueError("incorrect time")
+        else:
+            raise ValueError("should be integer")
+        if isinstance(min, (int)):
+            if min >= 0 and min < 60:
+                self.min = min
+            else:
+                raise ValueError("incorrect time")
+        else:
+            raise ValueError("should be integer")
+        if isinstance(sec, (int)):
+            if sec >= 0 and min < 60:
+                self.sec = sec
+            else:
+                raise ValueError("incorrect time")
+        else:
+            raise ValueError("should be integer")
+    def get_hour(self):
+        return self.hour
+    def get_min(self):
+        return self.min
+    def get_sec(self):
+        return self.sec
+    def WhTime(self):
+        return str(str(self.hour)+':'+str(self.min)+':'+str(self.sec))
+
+    def hour_pl(self):
+        if self.hour == 23:
+            self.hour = self.hour-23
+        else:
+            self.hour += 1
+
+    def min_pl(self):
+        if self.min == 59:
+            self.min = self.min -59
+            if self.hour == 23:
+                self.hour = self.hour -23
+            else :
+                self.hour=self.hour+1
+        else:
+            self.min=self.min+1
+
+    def sec_pl(self):
+        if self.sec == 59:
+            self.sec = self.sec - 59
+            if self.min == 59:
+                self.min = self.min - 59
+                if self.hour == 23:
+                    self.hour = self.hour - 23
+                else :
+                    self.hour = self.hour+1
+            else:
+                self.min = self.min+1
+        else :
+            self.sec = self.sec+1
+
+ftime = Time(23,59,59)
+ftime.sec_pl()
+ftime.hour_pl()
+ftime.min_pl()
+ftime.sec_pl()
+print(ftime.WhTime())
+
